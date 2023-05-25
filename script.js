@@ -15,11 +15,20 @@ async function getMovies() {
     console.log(error);
    }
 }
-        //função para mostrar os filmes 
+        //função para mostrar os no html 
 function displayMovies(movies){
-     let movieElement = document.getElementById('movieContainer');
-     movieElement.innerHTML = "";
-     movies.forEach(movie =>{
-        movieElement.innerHTML = `<h2>${movie.title}</h2>`
+    let movieContainer = document.getElementById("movieContainer");
+    movieContainer.innerHTML = "";
+
+    movies.forEach(movie => {
+     let movieElement = document.createElement('div');
+     movieElement.classList.add('movie');
+     movieElement.innerHTML =`
+     <h2> ${movie.title} </h2>
+     <img src="https://image.tmdb.org/t/pw500${movie.poster_path}">
+     <p> ${movie.overview}</p>
+     `;
+     movieContainer.appendchild(movieElement)
+        
     });
 }
